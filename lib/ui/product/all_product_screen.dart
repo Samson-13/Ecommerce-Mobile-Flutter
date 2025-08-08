@@ -1,3 +1,4 @@
+import 'package:ecommerce_mobile/widgets/search_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -20,37 +21,36 @@ class _AllProductScreenState extends State<AllProductScreen> {
 
   // Track favorite status for each product
   final Set<int> _favorites = {};
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(
-          left: 16.0,
-          right: 16.0,
-          top: 40.0,
-          bottom: 16.0,
+      appBar: AppBar(
+        title: Text(
+          "Cloveis",
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              FocusScope.of(context).unfocus();
+              context.push("/cart");
+            },
+            icon: const Icon(Icons.shopping_bag_outlined),
+          ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  "Cloveis",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                IconButton(
-                  onPressed: () {
-                    FocusScope.of(context).unfocus();
-                    context.push("/cart");
-                  },
-                  icon: const Icon(Icons.shopping_bag_outlined),
-                ),
-              ],
+            CustomSearchBar(
+              controller: _searchController,
+              hintText: "Search..",
             ),
-            // const Gap(8),
+            const Gap(12),
             Expanded(
               child: GridView.count(
                 crossAxisCount: 2,

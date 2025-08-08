@@ -16,14 +16,11 @@ class WeatherWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          GridView.count(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: GridView.count(
             crossAxisCount: 1,
             crossAxisSpacing: 12,
             mainAxisSpacing: 12,
@@ -66,8 +63,8 @@ class WeatherWidgets extends StatelessWidget {
                   );
                 }).toList(),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

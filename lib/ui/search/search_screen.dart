@@ -1,4 +1,5 @@
-import 'package:ecommerce_mobile/l10n/l10n.dart';
+import 'package:ecommerce_mobile/ui/home/widget/weather_banners.dart';
+import 'package:ecommerce_mobile/widgets/search_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -48,81 +49,54 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(context.l10n.brand_name)),
+      appBar: AppBar(
+        title: const Text("Sam Sun"),
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+      ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12),
         child: Column(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.grey[200],
-                borderRadius: BorderRadius.circular(25),
-                border: Border.all(
-                  color: Colors.grey, // Customize your border color here
-                  width: 1.2, // Optional: thickness of the border
-                ),
-              ),
-              child: TextField(
-                autofocus: false,
-
-                controller: _searchController,
-                onChanged: _onSearch,
-                decoration: InputDecoration(
-                  hintText: context.l10n.search,
-                  prefixIcon: Icon(Icons.search),
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 14,
-                  ),
-                ),
-              ),
+            // Search Bar
+            CustomSearchBar(
+              controller: _searchController,
+              hintText: "Search...",
             ),
             const Gap(20),
+
+            // Products or Empty State
             Expanded(
               child:
                   filteredIndexes.isEmpty
-                      ? Center(child: Text(context.l10n.no_result_found))
-                      : GridView.builder(
-                        itemCount: filteredIndexes.length,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              mainAxisSpacing: 12,
-                              crossAxisSpacing: 12,
-                              childAspectRatio: 0.75,
+                      ? const Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.search_off,
+                              size: 50,
+                              color: Colors.grey,
                             ),
-                        itemBuilder: (context, i) {
-                          final index = filteredIndexes[i];
-                          return Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(12),
-                                  child: Image.network(
-                                    productImages[index],
-                                    fit: BoxFit.cover,
-                                    width: double.infinity,
-                                  ),
-                                ),
+                            Gap(10),
+                            Text(
+                              "No products found",
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.black54,
                               ),
-                              const Gap(8),
-                              Text(
-                                productNames[index],
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ],
-                          );
-                        },
-                      ),
+                            ),
+                          ],
+                        ),
+                      )
+                      : WeatherWidgets(),
             ),
           ],
         ),
       ),
+      backgroundColor: Colors.grey[50],
     );
   }
 }

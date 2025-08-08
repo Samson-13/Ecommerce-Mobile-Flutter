@@ -1,4 +1,3 @@
-import 'package:ecommerce_mobile/l10n/l10n.dart';
 import 'package:ecommerce_mobile/widgets/list_tile_options.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -35,7 +34,7 @@ class MoreScreen extends StatelessWidget {
             const SizedBox(height: 20),
             buildListTileOption(
               icon: Icons.person_outline,
-              label: context.l10n.profile,
+              label: "Profile",
               onTap: () => context.push("/profile"),
             ),
             buildListTileOption(
@@ -45,17 +44,17 @@ class MoreScreen extends StatelessWidget {
             ),
             buildListTileOption(
               icon: Icons.settings_outlined,
-              label: context.l10n.profile,
+              label: "Settings",
               onTap: () => context.push("/profile"),
             ),
             buildListTileOption(
               icon: Icons.shield_outlined,
-              label: context.l10n.profile,
+              label: "Privacy Policy",
               onTap: () => context.push("/profile"),
             ),
             buildListTileOption(
               icon: Icons.logout,
-              label: context.l10n.profile,
+              label: "Log Out",
               onTap: () => context.push("/profile"),
             ),
           ],

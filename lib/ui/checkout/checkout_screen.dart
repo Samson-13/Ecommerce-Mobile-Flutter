@@ -19,7 +19,7 @@ class CheckoutScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              context.l10n.shippingAddress,
+              "Shipping Address",
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const Gap(12),
@@ -27,7 +27,7 @@ class CheckoutScreen extends StatelessWidget {
               autofocus: false,
 
               decoration: InputDecoration(
-                hintText: context.l10n.enterAddress,
+                hintText: "Enter Address",
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -36,14 +36,14 @@ class CheckoutScreen extends StatelessWidget {
             ),
             Gap(8),
             Text(
-              context.l10n.city,
+              "City",
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const Gap(8),
             TextField(
               autofocus: false,
               decoration: InputDecoration(
-                hintText: context.l10n.pin_code,
+                hintText: "Pin Code",
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -51,14 +51,14 @@ class CheckoutScreen extends StatelessWidget {
             ),
             const Gap(8),
             Text(
-              context.l10n.pin_code,
+              "Pin Code",
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const Gap(8),
             TextField(
               autofocus: false,
               decoration: InputDecoration(
-                hintText: context.l10n.enter_pin_code,
+                hintText: "Enter Pin Code",
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -67,7 +67,7 @@ class CheckoutScreen extends StatelessWidget {
             const Gap(24),
 
             Text(
-              context.l10n.paymentMethod,
+              "Payment Method",
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const Gap(12),
@@ -90,14 +90,14 @@ class CheckoutScreen extends StatelessWidget {
             const Gap(24),
 
             Text(
-              context.l10n.orderSummary,
+              "Order Summary",
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const Gap(12),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(context.l10n.subtotal),
+                Text("Sub-Total"),
                 Text("₹${subtotal.toStringAsFixed(2)}"),
               ],
             ),
@@ -105,7 +105,7 @@ class CheckoutScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(context.l10n.shipping),
+                Text("Shipping"),
                 Text("₹${shippingFee.toStringAsFixed(2)}"),
               ],
             ),
@@ -114,7 +114,7 @@ class CheckoutScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  context.l10n.total,
+                  "Total",
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Text(
@@ -128,19 +128,19 @@ class CheckoutScreen extends StatelessWidget {
             ),
             const Gap(24),
             ButtonWidget(
-              label: context.l10n.placeOrder,
+              label: "Place Order",
               onTap: () {
                 // Handle order placement
                 showDialog(
                   context: context,
                   builder:
                       (_) => AlertDialog(
-                        title: Text(context.l10n.success),
-                        content: Text(context.l10n.orderPlaced),
+                        title: Text("Success"),
+                        content: Text("Ordered Placed"),
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.pop(context),
-                            child: Text(context.l10n.ok),
+                            child: Text("Ok"),
                           ),
                         ],
                       ),

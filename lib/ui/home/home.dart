@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:ecommerce_mobile/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -17,7 +16,7 @@ class HomeScreen extends StatelessWidget {
         slivers: [
           SliverAppBar(
             pinned: true,
-            title: Text(context.l10n.brand_name),
+            title: Text("Sam Sun"),
             actions: [
               IconButton(
                 onPressed: () {
@@ -42,7 +41,6 @@ class HomeScreen extends StatelessWidget {
           ),
           SliverToBoxAdapter(child: CategoryWidget(key: key)),
           // SliverToBoxAdapter(child: Gap(16)),
-          SliverToBoxAdapter(child: WeatherWidgets(key: key)),
         ],
       ),
     );

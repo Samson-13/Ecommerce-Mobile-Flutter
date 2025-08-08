@@ -1,4 +1,3 @@
-import 'package:ecommerce_mobile/l10n/l10n.dart';
 import 'package:ecommerce_mobile/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -129,7 +128,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 onTap: () {
                   _saveProfile();
                 },
-                label: context.l10n.save,
+                label: "Save",
               ),
             ],
           ),

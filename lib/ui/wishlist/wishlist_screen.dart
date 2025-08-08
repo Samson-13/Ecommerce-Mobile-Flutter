@@ -1,4 +1,3 @@
-import 'package:ecommerce_mobile/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -26,7 +25,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(context.l10n.wishlist)),
+      appBar: AppBar(title: Text("Wishlist")),
       body:
           wishlistImages.isEmpty
               ? const Center(child: Text("Your wishlist is empty."))
