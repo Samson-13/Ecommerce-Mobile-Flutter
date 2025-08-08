@@ -1,5 +1,5 @@
-import 'package:ecommerce_mobile/presentation/widgets/button_widget.dart';
-import 'package:ecommerce_mobile/presentation/widgets/email_widget.dart';
+import 'package:ecommerce_mobile/widgets/button_widget.dart';
+import 'package:ecommerce_mobile/widgets/email_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';

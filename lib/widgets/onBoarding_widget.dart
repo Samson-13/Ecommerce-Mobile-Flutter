@@ -19,8 +19,10 @@ class OnboardingStep extends StatelessWidget {
       children: [
         Image.network(image, height: 200),
         const SizedBox(height: 10),
-        Text(title,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+        Text(
+          title,
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
         const SizedBox(height: 5),
         Text(
           description,

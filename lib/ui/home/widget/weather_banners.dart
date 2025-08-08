@@ -1,0 +1,73 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+class WeatherWidgets extends StatelessWidget {
+  final List<String> categories = ["All", "Newest", "Popular", "Man", "Woman"];
+  final List<String> productImages = [
+    "https://i.pinimg.com/736x/ef/62/2c/ef622cc489f83b6eefba054434b426be.jpg",
+    "https://i.pinimg.com/736x/a9/a2/31/a9a231ebd6964242770867c21da88632.jpg",
+    "https://i.pinimg.com/736x/25/a7/87/25a7874a85fc0e801af4d5bc702d1e42.jpg",
+    "https://i.pinimg.com/736x/89/d6/40/89d6405651d6a38e24a3c690b02721aa.jpg",
+    "https://i.pinimg.com/736x/23/ed/9a/23ed9afe0bb61fb8fae912456ca5d7dd.jpg",
+    "https://i.pinimg.com/736x/a7/15/a4/a715a4d65123e637ed2f4b614770b124.jpg",
+  ];
+
+  WeatherWidgets({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          GridView.count(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            crossAxisCount: 1,
+            crossAxisSpacing: 12,
+            mainAxisSpacing: 12,
+            childAspectRatio: 1,
+            children:
+                productImages.map((url) {
+                  return GestureDetector(
+                    onTap: () {
+                      context.push('/allProducts');
+                    },
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(16),
+                            child: Image.network(
+                              url,
+                              fit: BoxFit.cover,
+                              width: double.infinity,
+                              loadingBuilder: (
+                                context,
+                                child,
+                                loadingProgress,
+                              ) {
+                                if (loadingProgress == null) return child;
+                                return Container(
+                                  color: Colors.grey[200],
+                                  child: const Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                      ],
+                    ),
+                  );
+                }).toList(),
+          ),
+        ],
+      ),
+    );
+  }
+}

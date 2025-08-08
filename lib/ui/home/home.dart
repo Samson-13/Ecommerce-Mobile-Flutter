@@ -1,7 +1,8 @@
 import 'dart:developer';
 
+import 'package:ecommerce_mobile/l10n/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 import 'widget/widget.dart';
 
@@ -10,19 +11,20 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-          horizontal: 16.0), // Adjust padding as needed
-      child: CustomScrollView(
+    return Scaffold(
+      body: CustomScrollView(
         physics: const ClampingScrollPhysics(),
         slivers: [
           SliverAppBar(
             pinned: true,
-            title: const Text('Home'),
+            title: Text(context.l10n.brand_name),
             actions: [
               IconButton(
-                onPressed: () {},
-                icon: const FaIcon(FontAwesomeIcons.bell),
+                onPressed: () {
+                  FocusScope.of(context).unfocus();
+                  context.push("/cart");
+                },
+                icon: const Icon(Icons.shopping_bag_outlined),
               ),
             ],
           ),
@@ -38,14 +40,9 @@ class HomeScreen extends StatelessWidget {
                   'https://i.pinimg.com/736x/1b/ac/fe/1bacfe4a2ba7a6946ef95dc0bfff802d.jpg',
             ),
           ),
-          SliverToBoxAdapter(
-              child: CategoryWidget(
-            key: key,
-          )),
-          SliverToBoxAdapter(
-              child: FlashSaleWidget(
-            key: key,
-          ))
+          SliverToBoxAdapter(child: CategoryWidget(key: key)),
+          // SliverToBoxAdapter(child: Gap(16)),
+          SliverToBoxAdapter(child: WeatherWidgets(key: key)),
         ],
       ),
     );

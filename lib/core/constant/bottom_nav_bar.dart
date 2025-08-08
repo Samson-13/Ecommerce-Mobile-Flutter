@@ -1,7 +1,8 @@
-import 'package:ecommerce_mobile/presentation/pages/home/home.dart';
-import 'package:ecommerce_mobile/presentation/pages/profile/profile_screen.dart';
+import 'package:ecommerce_mobile/ui/home/home.dart';
+import 'package:ecommerce_mobile/ui/more/more_screen.dart';
+import 'package:ecommerce_mobile/ui/search/search_screen.dart';
+import 'package:ecommerce_mobile/ui/wishlist/wishlist_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -19,19 +20,9 @@ class _CustomBottomNavigationBarState
 
   final List<Widget> _pages = [
     const HomeScreen(),
-    const Center(
-      child: Text(
-        'Likes Page',
-        style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
-      ),
-    ),
-    const Center(
-      child: Text(
-        'Search Page',
-        style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
-      ),
-    ),
-    const ProfileScreen(),
+    const SearchScreen(),
+    const WishlistScreen(),
+    const MoreScreen(),
   ];
 
   @override
@@ -65,19 +56,22 @@ class _CustomBottomNavigationBarState
               iconSize: 24,
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               duration: const Duration(milliseconds: 400),
-              tabBackgroundColor: Colors.brown[100]!,
+              tabBackgroundColor: Colors.black,
               color: Theme.of(context).colorScheme.onSurface,
               selectedIndex: _selectedIndex,
               onTabChange: (index) {
+                FocusScope.of(context).unfocus(); // This dismisses keyboard
+
                 setState(() {
                   _selectedIndex = index;
                 });
               },
               tabs: const [
-                GButton(icon: FontAwesomeIcons.house, iconSize: 18),
-                GButton(icon: FontAwesomeIcons.heart, iconSize: 18),
-                GButton(icon: FontAwesomeIcons.magnifyingGlass, iconSize: 18),
-                GButton(icon: FontAwesomeIcons.user, iconSize: 18),
+                GButton(icon: Icons.house, iconSize: 18),
+                GButton(icon: Icons.search, iconSize: 18),
+
+                GButton(icon: Icons.favorite, iconSize: 18),
+                GButton(icon: Icons.more_horiz, iconSize: 18),
               ],
             ),
           ),
